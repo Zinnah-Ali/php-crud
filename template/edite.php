@@ -54,6 +54,7 @@ $usersListQry = mysqli_query($dbCon, "SELECT * FROM users WHERE `id` = {$id}");
                 </div>
 
                 <div class="mb-3">
+                    <label for="image">Image</label>
                     <input type="file" class="form-control" name="image" id="image" value="<?= $user['image']; ?>">
                     <br>
                     <img style="width:50px; height: 50px;" src="../image/<?= $user['image']?>" alt="">

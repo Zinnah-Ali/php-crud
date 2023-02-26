@@ -72,16 +72,20 @@ if (isset($_POST['update_users'])) {
   $email = $_POST['email'];
   $password = $_POST['password'];
 
-  if (empty($name) || empty($email) || empty($password) || $inExtantion == false) {
+  if (empty($name) || empty($email) || empty($password) ) {
       $message = "All Fields are required";
   }else{
-    $updateUserQry = "UPDATE `users` SET `name`='{$name}',`email`='{$email}',`password`='{$password}', `image`='{$randomFileName}' WHERE `id` = {$id}";
-    $userUpdate = mysqli_query($dbCon, $updateUserQry);
+    if ($imageStatus == false) {
+      $message = "please Add One Image File This page the field is requarde";
+    } else {
+      $updateUserQry = "UPDATE `users` SET `name`='{$name}',`email`='{$email}',`password`='{$password}', `image`='{$randomFileName}' WHERE `id` = {$id}";
+      $userUpdate = mysqli_query($dbCon, $updateUserQry);
 
-    if ($userUpdate = true) {
-      $message = "User Update Succesfull";
-    }else{
-      $message = "I think you are wrong";
+      if ($userUpdate = true) {
+        $message = "User Update Succesfull";
+      }else{
+        $message = "I think you are wrong";
+      }
     }
   }
   header("Location: ../template/edite.php?msg={$message}&id={$id}");
