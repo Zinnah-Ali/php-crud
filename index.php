@@ -41,7 +41,7 @@ $usersListQry = mysqli_query($dbCon, "SELECT * FROM users WHERE `status` = 1");
           </div>
         <?php } ?>
 
-        <form action="controller/crud.php" method="POST">
+        <form action="controller/crud.php" method="POST" enctype="multipart/form-data">
           <div class="mb-3">
             <input type="name" class="form-control" name="name" id="name"
             placeholder="Name">
@@ -54,6 +54,9 @@ $usersListQry = mysqli_query($dbCon, "SELECT * FROM users WHERE `status` = 1");
 
           <div class="mb-3">
             <input type="password" class="form-control" name="password" id="password" placeholder="">
+          </div>
+          <div class="mb-3">
+            <input type="file" class="form-control" name="image" id="image" placeholder="">
           </div>
           <div class="mb-3 text-center">
             <input type="submit" class="btn btn-success" name="save_users" id="submit">
@@ -72,6 +75,7 @@ $usersListQry = mysqli_query($dbCon, "SELECT * FROM users WHERE `status` = 1");
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
+                <th scope="col">Image</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -83,6 +87,9 @@ $usersListQry = mysqli_query($dbCon, "SELECT * FROM users WHERE `status` = 1");
                     <td scope="row"><?= ++$key ?></td>
                     <td><?= $user['name'] ?></td>
                     <td><?= $user['email']?></td>
+                    <td>
+                      <img style="width:50px; height: 50px;" src="image/<?= $user['image']?>" alt="">
+                    </td>
                     <td>
                     <a class="btn btn-info" href="template/edite.php?id=<?= $user['id'] ?>"> Edit </a>
                     <a class="btn btn-danger" href="template/delete.php?id=<?= $user['id'] ?>"> Delete </a>

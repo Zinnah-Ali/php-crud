@@ -42,7 +42,7 @@ $usersListQry = mysqli_query($dbCon, "SELECT * FROM users WHERE `id` = {$id}");
                 </div>
         <?php } ?>
         <?php foreach ($usersListQry as $key => $user) { ?>
-            <form action="../controller/crud.php?id=<?php echo $user['id'] ?>" method="POST">
+            <form action="../controller/crud.php?id=<?php echo $user['id'] ?>" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                     <input type="name" class="form-control" name="name" id="name"
                     placeholder="Name" value="<?= $user['name']; ?>">
@@ -51,6 +51,12 @@ $usersListQry = mysqli_query($dbCon, "SELECT * FROM users WHERE `id` = {$id}");
                 <div class="mb-3">
                     <input type="email" class="form-control" name="email" id="email"
                     placeholder="abc@mail.com"  value="<?= $user['email']; ?>">
+                </div>
+
+                <div class="mb-3">
+                    <input type="file" class="form-control" name="image" id="image" value="<?= $user['image']; ?>">
+                    <br>
+                    <img style="width:50px; height: 50px;" src="../image/<?= $user['image']?>" alt="">
                 </div>
 
                 <div class="mb-3">
@@ -73,6 +79,7 @@ $usersListQry = mysqli_query($dbCon, "SELECT * FROM users WHERE `id` = {$id}");
               <tr>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
+                <th scope="col">Image</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -84,8 +91,11 @@ $usersListQry = mysqli_query($dbCon, "SELECT * FROM users WHERE `id` = {$id}");
                     <td><?= $user['name'] ?></td>
                     <td><?= $user['email']?></td>
                     <td>
-                    <a class="btn btn-info" href="edit.php"> Edit </a>
-                    <a class="btn btn-danger" href="delete.php"> Delete </a>
+                      <img style="width:50px; height: 50px;" src="../image/<?= $user['image']?>" alt="">
+                    </td>
+                    <td>
+                      <a class="btn btn-info" href="edit.php"> Edit </a>
+                      <a class="btn btn-danger" href="delete.php"> Delete </a>
                     </td>
                 </tr>
                 <?php }?>
