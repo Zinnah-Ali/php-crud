@@ -6,5 +6,3 @@ let saveUsers = document.getElementById('save_users');
 saveUsers.addEventListener('click', function () {
  
 })
-
-

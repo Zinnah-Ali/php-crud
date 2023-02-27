@@ -152,6 +152,7 @@ $usersListQry = mysqli_query($dbCon, "SELECT * FROM users WHERE `id` = {$id}");
   const myModal = new bootstrap.Modal(document.getElementById('imageModal<?= $user['id']?>'), options)
 
 </script>
+<script src="../assets/index.js"></script>
 </body>
 
 </html>

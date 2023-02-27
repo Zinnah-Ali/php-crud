@@ -161,7 +161,7 @@ $usersListQry = mysqli_query($dbCon, "SELECT * FROM users WHERE `status` = 1");
   const myModal = new bootstrap.Modal(document.getElementById('imageModal<?= $user['id']?>'), options)
 
 </script>
-<script src="./assets/index.js"></script>
+<script src="assets/index.js"></script>
 </body>
 
 </html>
