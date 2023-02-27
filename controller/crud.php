@@ -110,4 +110,3 @@ if (isset($_POST['update_users'])) {
   }
   header("Location: ../template/edite.php?msg={$message}&id={$id}");
 }
-
