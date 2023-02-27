@@ -39,27 +39,37 @@ $usersListQry = mysqli_query($dbCon, "SELECT * FROM users WHERE `status` = 1");
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             <?= $_GET['msg']; ?>
           </div>
-        <?php } ?>
+        <?php 
+          } 
+          
+         //Get URL Old Data 
+         function oldData( $value ) {
+          if (isset($_GET[$value])) {
+            echo $_GET[$value];
+          }
+         }
+
+        ?>
 
         <form action="controller/crud.php" method="POST" enctype="multipart/form-data">
           <div class="mb-3">
             <input type="name" class="form-control" name="name" id="name"
-            placeholder="Name">
+            placeholder="Name" value="<?php oldData('name') ?>">
           </div>
 
           <div class="mb-3">
             <input type="email" class="form-control" name="email" id="email"
-            placeholder="abc@mail.com">
+            placeholder="abc@mail.com" value="<?php oldData('email') ?>">
           </div>
 
           <div class="mb-3">
-            <input type="password" class="form-control" name="password" id="password" placeholder="">
+            <input type="password" class="form-control" name="password" id="password" value="<?php oldData('pass') ?>">
           </div>
           <div class="mb-3">
             <input type="file" class="form-control" name="image" id="image" placeholder="">
           </div>
           <div class="mb-3 text-center">
-            <input type="submit" class="btn btn-success" name="save_users" id="submit">
+            <input type="submit" class="btn btn-success" name="save_users" id="save_users">
           </div>
         </form>
       </div>
@@ -122,6 +132,7 @@ $usersListQry = mysqli_query($dbCon, "SELECT * FROM users WHERE `status` = 1");
     new bootstrap.Alert(alert)
   })
 </script>
+<script src="./assets/index.js"></script>
 </body>
 
 </html>

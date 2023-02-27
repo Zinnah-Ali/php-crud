@@ -1,5 +1,6 @@
 <?php
 require('dbCon.php');
+
 //Add users
 if (isset($_POST['save_users'])) {
 
@@ -33,7 +34,7 @@ if (isset($_POST['save_users'])) {
       $message = "All Fields are required";
   }else{
     if ($inExtantion == false) {
-      $message = $fileExtantion . " Extantions is not supported";
+      $message = " I think Image is some wrong ";
     } else {
       $insertUserQry = "INSERT INTO `users`( `name`, `email`, `password`, `image`) VALUES ('{$name}','{$email}','{$password}', '{$randomFileName}')";
       $userSubmit = mysqli_query($dbCon, $insertUserQry);
@@ -45,7 +46,7 @@ if (isset($_POST['save_users'])) {
       }
     }
   }
-  header("Location: ../index.php?msg={$message}");
+  header("Location: ../index.php?msg={$message}&name={$name}&email={$email}&pass={$password}");
 }
 
 
