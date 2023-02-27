@@ -10,12 +10,16 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <style>
-      .login-form{
-        width: 600px;
-        margin:20px auto;
-
-      }
-    </style>
+    .login-form{
+    width: 600px;
+    margin:20px auto;
+  }
+  .imagBtn{
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+  }
+  </style>
 </head>
 
 <body>
@@ -62,14 +66,31 @@ $usersListQry = mysqli_query($dbCon, "SELECT * FROM users WHERE `status` = 0");
                             <td scope="row"><?= ++$key ?></td>
                             <td><?= $user['name'] ?></td>
                             <td><?= $user['email']?></td>
-                            <td>
-                            <img style="width:50px; height: 50px;" src="../image/<?= $user['image']?>" alt="">
+                            <td data-bs-toggle="modal" data-bs-target="#imageModal<?= $user['id']?>">
+                                <img class="imagBtn" src="../image/<?= $user['image']?>" alt="">
                             </td>
                             <td>
                             <a class="btn btn-warning" href="../template/active.php?id=<?= $user['id'] ?>"> Active </a>
                             <a class="btn btn-danger" href="../template/fullDelete.php?id=<?= $user['id'] ?>">Full Delete </a>
                             </td>
                         </tr>
+                        <!-- Modal Body -->
+                        <div class="modal fade" id="imageModal<?= $user['id']?>" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xxl" role="document">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalTitleId">View Image</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                <img width="100%" src="../image/<?= $user['image']?>" >
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
                         <?php
                     }
                 } else {
@@ -98,12 +119,18 @@ $usersListQry = mysqli_query($dbCon, "SELECT * FROM users WHERE `status` = 0");
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
   </script>
           
-  <script>
+<script>
+  //Alert Code
   var alertList = document.querySelectorAll('.alert');
   alertList.forEach(function (alert) {
     new bootstrap.Alert(alert)
   })
+
+  // Modal code
+  const myModal = new bootstrap.Modal(document.getElementById('imageModal<?= $user['id']?>'), options)
+
 </script>
+
 <script src="./assets/index.js"></script>
 </body>
 
