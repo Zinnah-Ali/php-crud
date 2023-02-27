@@ -69,7 +69,7 @@ $usersListQry = mysqli_query($dbCon, "SELECT * FROM users WHERE `status` = 1");
             <input type="file" class="form-control" name="image" id="image" placeholder="">
           </div>
           <div class="mb-3 text-center">
-            <input type="submit" class="btn btn-success" name="save_users" id="save_users">
+            <input type="submit" class="btn btn-success" name="save_users" id="save_users" value="Add User">
           </div>
         </form>
       </div>
