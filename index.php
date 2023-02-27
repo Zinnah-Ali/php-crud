@@ -29,7 +29,7 @@ $usersListQry = mysqli_query($dbCon, "SELECT * FROM users WHERE `status` = 1");
   <div class="login-form">
     <div class="card">
       <div class="card-body">
-        <h3 class="text-center">Users Info</h3>
+        <h3 class="text-center">Add User Info</h3>
         <a class="btn btn-danger my-2" href="template/parDelete.php"> Parmanent Delete </a>
         <?php
         // Message Show

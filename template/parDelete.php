@@ -30,6 +30,7 @@ $usersListQry = mysqli_query($dbCon, "SELECT * FROM users WHERE `status` = 0");
     <div class="card">
       <div class="card-body">
         <div class="table-responsive">
+        <h3 class="text-center">Full Delete Data</h3>
         <a class="btn btn-success my-2" href="../index.php"> Go to List </a>
           <table class="table table-primary">
             <thead>

@@ -32,7 +32,7 @@ $usersListQry = mysqli_query($dbCon, "SELECT * FROM users WHERE `id` = {$id}");
   <div class="login-form">
     <div class="card">
       <div class="card-body">
-        <h3 class="text-center">Change Users Data</h3>
+        <h3 class="text-center">Change User Data</h3>
         <a class="btn btn-success my-2" href="../index.php"> Go to List </a>
         <?php
             if (isset($_GET['msg'])) { ?>
